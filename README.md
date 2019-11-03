@@ -48,7 +48,7 @@ The filter strategy is created and applied based on inputs. Currently it contain
 
 ## Getting Started
 
-$ get clone https://github.com/ericlee83/QT.git
+$ get clone https://github.com/ericlee83/QT_Challenge
 
 
 ### Running this application
