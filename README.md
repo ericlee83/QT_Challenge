@@ -3,7 +3,7 @@
 AirportFinder application consumes the Qantas JSON API and allows the consumer to list and filter airports
 by country, airport code, international, domestic airports.
 
-AirportFinder exposes two end points for listing and filtering airports.
+AirportFinder exposes two end points for listing and filtering airports. By default it use http://localhost:8080.
 
 1. /rest/airports : It lists all the airports information based on the Qantas JSOM API.
 
@@ -76,39 +76,27 @@ Assert if the AirportRestController is alive.
 #### Maven
 1. $ mvn -Dtest=AirportFinderApplicationTest test
 
-### System test
-SystemTest.java
-Test the complete FlightRadarApplication.
-#### IDE
-Use TestRestTemplate as a client to call local FlightRadarApplicaiton and compare the response with Qantas Json Api to make sure that FilghtRadarApplicaiton is running.
-1. Run FilghtRadarApplicaiton as Spring boot application.
-2. Run SystemTest.
-
-#### Maven
-1. Keep AirportFinderApplicaiton alive.
-2. $ mvn -Dtest=SystemTest test
-
 ### Integration test
-IntergrationTest.java
+AirportRestControllerIT.java
 Test AirportRestController and AirportService
 #### IDE
-1. Run IntergrationTest as a JUnit test.
+1. Run AirportRestControllerIT as a JUnit test.
 
 #### Maven
-1. $ mvn -Dtest=SystemTest test
+1. $ mvn -Dtest=AirportRestControllerIT test
 
 ### Unit test
 StandaloneControllerTest, ServiceTest and FilterTest
 Test standalone controller, Service and FilterStrategy
 #### IDE
-1. Run StandaloneControllerTest as a JUnit test.
-2. Run ServiceTest as a JUnit test.
-3. Run FilterTest as a JUnit test.
+1. Run AirportRestControllerTest as a JUnit test.
+2. Run AirportServiceTest as a JUnit test.
+3. Run AirportFilterTest as a JUnit test.
 
 ####Maven
-1. $ mvn -Dtest=StandaloneControllerTest test
-2. $ mvn -Dtest=ServiceTest test
-3. $ mvn -Dtest=FilterTest test
+1. $ mvn -Dtest=AirportRestControllerTest test
+2. $ mvn -Dtest=AirportServiceTest test
+3. $ mvn -Dtest=AirportFilterTest test
 
 
 ## Built With

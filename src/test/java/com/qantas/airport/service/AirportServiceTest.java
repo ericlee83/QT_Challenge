@@ -13,7 +13,7 @@ import com.qantas.airport.filter.AirportFilter;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ServiceTest {
+public class AirportServiceTest {
 
 	@Autowired
 	AirportService airportService;

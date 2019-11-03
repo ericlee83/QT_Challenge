@@ -11,7 +11,7 @@ import com.qantas.airport.controller.AirportRestController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class AirportFinderApplicationTests {
+public class AirportFinderApplicationTest {
 
 	@Autowired
 	AirportRestController flightRestController;
