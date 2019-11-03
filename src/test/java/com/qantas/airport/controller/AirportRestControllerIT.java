@@ -11,44 +11,46 @@ import com.qantas.airport.domain.client.AirportInfoResponse;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class IntergrationTest {
-	
+public class AirportRestControllerIT {
+
 	@Autowired
 	AirportRestController airportRestController;
-	
+
 	@Test
-	public void testFindAirports(){
+	public void getAllAirports_shouldReturnAirports() {
 		AirportInfoResponse airportInfo = airportRestController.findAirports();
 		Assertions.assertThat(airportInfo.getAirports()).isNotEmpty();
 	}
-	
+
 	@Test
-	public void testFindAustraliaInternationalAirport(){
-		AirportInfoResponse austriliaInternationalAirportInfo = airportRestController.findAirportsByQuery("AU", null, "true", null);
-		
+	public void testAustraliaInternationalAirport() {
+		AirportInfoResponse austriliaInternationalAirportInfo = airportRestController.findAirportsByQuery("AU", null,
+				"true", null);
+
 		Assertions.assertThat(austriliaInternationalAirportInfo.getAirports())
-		.extracting(airport->airport.getInternationalAirport()).containsOnly(true);
-		
+				.extracting(airport -> airport.getInternationalAirport()).containsOnly(true);
+
 		Assertions.assertThat(austriliaInternationalAirportInfo.getAirports())
-		.extracting(airport->airport.getCountry().getCode()).containsOnly("AU");
+				.extracting(airport -> airport.getCountry().getCode()).containsOnly("AU");
 	}
-	
+
 	@Test
-	public void testFindAustraliaRegionalAirport(){
-		AirportInfoResponse australiaRegionalAirportInfo = airportRestController.findAirportsByQuery("AU", null, null, "true");
-		
+	public void testFindAustraliaRegionalAirport() {
+		AirportInfoResponse australiaRegionalAirportInfo = airportRestController.findAirportsByQuery("AU", null, null,
+				"true");
+
 		Assertions.assertThat(australiaRegionalAirportInfo.getAirports())
-		.extracting(airport->airport.getRegionalAirport()).containsOnly(true);
-		
+				.extracting(airport -> airport.getRegionalAirport()).containsOnly(true);
+
 		Assertions.assertThat(australiaRegionalAirportInfo.getAirports())
-		.extracting(airport->airport.getCountry().getCode()).containsOnly("AU");
+				.extracting(airport -> airport.getCountry().getCode()).containsOnly("AU");
 	}
-	
+
 	@Test
-	public void testFindSydneyAirportByAirportCodeSYD(){
+	public void testFindSydneyAirportByAirportCodeSYD() {
 		AirportInfoResponse sydneyAirportInfo = airportRestController.findAirportsByQuery(null, "SYD", null, null);
-		Assertions.assertThat(sydneyAirportInfo.getAirports())
-		.extracting(airport->airport.getCode()).containsOnly("SYD");
+		Assertions.assertThat(sydneyAirportInfo.getAirports()).extracting(airport -> airport.getCode())
+				.containsOnly("SYD");
 	}
 
 }

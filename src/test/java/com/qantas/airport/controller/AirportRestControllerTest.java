@@ -22,38 +22,31 @@ import com.qantas.airport.domain.client.AirportInfoResponse;
 import com.qantas.airport.filter.AirportFilter;
 import com.qantas.airport.service.AirportService;
 
-
-
 @RunWith(SpringRunner.class)
 @WebMvcTest(AirportRestController.class)
-public class StandaloneControllerTest {
-	
+public class AirportRestControllerTest {
+
 	@MockBean
 	AirportService airportService;
-	
+
 	@Autowired
 	MockMvc mockMvc;
-	
+
 	@Test
-	public void testFindAirportsByQuery() throws Exception{
+	public void testFindAirportsByQuery() throws Exception {
 		AirportInfoResponse mockAirportInfo = new AirportInfoResponse();
 		Airport sydneyAirports = new Airport();
 		sydneyAirports.setCode("SDY");
 		List<Airport> airports = new ArrayList<>();
 		airports.add(sydneyAirports);
 		mockAirportInfo.setAirports(airports);
-		
-		AirportFilter filter = new AirportFilter.AirportFilterBuilder()
-				.hasAirportCode("SDY")
-				.build();
-		
+
+		AirportFilter filter = new AirportFilter.AirportFilterBuilder().hasAirportCode("SDY").build();
+
 		Mockito.when(airportService.findAirports(filter)).thenReturn(mockAirportInfo);
-		
-		mockMvc.perform(get("/rest/airports/filters?airportCode=SDY"))
-		.andExpect(status().isOk());
-		//.andExpect(jsonPath("$.airports",Matchers.hasSize(1)))
-		//.andExpect(jsonPath("$.airports[0].code",Matchers.is("SDY")));
-		
+
+		mockMvc.perform(get("/rest/airports/filters?airportCode=SDY")).andExpect(status().isOk());
+
 	}
 
 }

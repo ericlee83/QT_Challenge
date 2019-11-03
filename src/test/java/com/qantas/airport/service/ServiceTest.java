@@ -14,48 +14,39 @@ import com.qantas.airport.filter.AirportFilter;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ServiceTest {
-	
+
 	@Autowired
 	AirportService airportService;
-	
+
 	@Test
-	public void testFindMelbourneAirportsByFilter(){
-		AirportFilter filter = new AirportFilter.AirportFilterBuilder()
-				.hasAirportCode("MEL")
-				.build();
+	public void testFindMelbourneAirportsByFilter() {
+		AirportFilter filter = new AirportFilter.AirportFilterBuilder().hasAirportCode("MEL").build();
 		AirportInfoResponse melbourneAirportInfo = airportService.findAirports(filter);
-		Assertions.assertThat(melbourneAirportInfo.getAirports())
-		.extracting(Airport::getCode).containsOnly("MEL");
+		Assertions.assertThat(melbourneAirportInfo.getAirports()).extracting(Airport::getCode).containsOnly("MEL");
 	}
-	
+
 	@Test
-	public void testFindAustriliaAirportsByFilter(){
-		AirportFilter filter = new AirportFilter.AirportFilterBuilder()
-				.fromCountryCode("AU")
-				.build();
+	public void testFindAustriliaAirportsByFilter() {
+		AirportFilter filter = new AirportFilter.AirportFilterBuilder().fromCountryCode("AU").build();
 		AirportInfoResponse melbourneAirportInfo = airportService.findAirports(filter);
-		Assertions.assertThat(melbourneAirportInfo.getAirports())
-		.extracting(airport->airport.getCountry().getCode()).containsOnly("AU");
+		Assertions.assertThat(melbourneAirportInfo.getAirports()).extracting(airport -> airport.getCountry().getCode())
+				.containsOnly("AU");
 	}
-	
+
 	@Test
-	public void testFindInternationalAirportsByFilter(){
-		AirportFilter filter = new AirportFilter.AirportFilterBuilder()
-				.isInternationalAirport("true")
-				.build();
+	public void testFindInternationalAirportsByFilter() {
+		AirportFilter filter = new AirportFilter.AirportFilterBuilder().isInternationalAirport("true").build();
 		AirportInfoResponse melbourneAirportInfo = airportService.findAirports(filter);
 		Assertions.assertThat(melbourneAirportInfo.getAirports())
-		.extracting(airport->airport.getInternationalAirport()).containsOnly(true);
+				.extracting(airport -> airport.getInternationalAirport()).containsOnly(true);
 	}
-	
+
 	@Test
-	public void testFindRegionalAirportsByFilter(){
-		AirportFilter filter = new AirportFilter.AirportFilterBuilder()
-				.isRegionalAirport("true")
-				.build();
+	public void testFindRegionalAirportsByFilter() {
+		AirportFilter filter = new AirportFilter.AirportFilterBuilder().isRegionalAirport("true").build();
 		AirportInfoResponse melbourneAirportInfo = airportService.findAirports(filter);
-		Assertions.assertThat(melbourneAirportInfo.getAirports())
-		.extracting(airport->airport.getRegionalAirport()).containsOnly(true);
+		Assertions.assertThat(melbourneAirportInfo.getAirports()).extracting(airport -> airport.getRegionalAirport())
+				.containsOnly(true);
 	}
 
 }

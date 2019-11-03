@@ -14,39 +14,38 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import com.qantas.airport.domain.ErrorMessage;
 
-
 @ControllerAdvice
 public class ControllerExceptionHandler {
-	
+
 	@ResponseBody
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler
 	ErrorMessage exceptionHandler(ValidationException e) {
 		e.printStackTrace();
-		return new ErrorMessage("400",e.getMessage());
+		return new ErrorMessage("400", e.getMessage());
 	}
-	
+
 	@ResponseBody
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-	@ExceptionHandler({HttpClientErrorException.class})
+	@ExceptionHandler({ HttpClientErrorException.class })
 	ErrorMessage exceptionHandler(HttpClientErrorException e) {
 		e.printStackTrace();
-		return new ErrorMessage(String.valueOf(e.getStatusCode().value()),e.getMessage());
+		return new ErrorMessage(String.valueOf(e.getStatusCode().value()), e.getMessage());
 	}
-	
+
 	@ResponseBody
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-	@ExceptionHandler({ConnectException.class})
+	@ExceptionHandler({ ConnectException.class })
 	ErrorMessage exceptionHandler(ConnectException e) {
 		e.printStackTrace();
-		return new ErrorMessage("500",e.getMessage());
+		return new ErrorMessage("500", e.getMessage());
 	}
 
 	@ResponseBody
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	@ExceptionHandler({ConstraintViolationException.class})
+	@ExceptionHandler({ ConstraintViolationException.class })
 	ErrorMessage exceptionHandler(ConstraintViolationException e) {
 		e.printStackTrace();
-		return new ErrorMessage("400",e.getMessage());
+		return new ErrorMessage("400", e.getMessage());
 	}
 }

@@ -7,12 +7,11 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.qantas.airport.domain.client.Airport;
 
-
 public class AirportCodeFilterStrategy implements FilterStrategy {
-	
+
 	private String airportCode;
-	
-	public String getAirportCode(){
+
+	public String getAirportCode() {
 		return airportCode;
 	}
 
@@ -23,8 +22,9 @@ public class AirportCodeFilterStrategy implements FilterStrategy {
 
 	@Override
 	public List<Airport> filterAirports(List<Airport> airports) {
-		if(StringUtils.isNoneBlank(airportCode)) {
-			airports = airports.stream().filter(airport->airportCode.equalsIgnoreCase(airport.getCode())).collect(Collectors.toList());
+		if (StringUtils.isNoneBlank(airportCode)) {
+			airports = airports.stream().filter(airport -> airportCode.equalsIgnoreCase(airport.getCode()))
+					.collect(Collectors.toList());
 		}
 		return airports;
 	}

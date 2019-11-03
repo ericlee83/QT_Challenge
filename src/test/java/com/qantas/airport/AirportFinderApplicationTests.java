@@ -12,7 +12,7 @@ import com.qantas.airport.controller.AirportRestController;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class AirportFinderApplicationTests {
-	
+
 	@Autowired
 	AirportRestController flightRestController;
 

@@ -7,18 +7,17 @@ import com.qantas.airport.domain.client.AirportInfoResponse;
 import com.qantas.airport.filter.AirportFilter;
 import com.qantas.airport.util.RestClientUtil;
 
-
 @Component("airportService")
 public class AirportService {
-	
+
 	@Autowired
 	RestClientUtil restClientUtil;
-	
-	public AirportInfoResponse findAirports(){
+
+	public AirportInfoResponse findAirports() {
 		return restClientUtil.getAirportInfoResponse();
 	}
 
-	public AirportInfoResponse findAirports(final AirportFilter filter){
+	public AirportInfoResponse findAirports(final AirportFilter filter) {
 		AirportInfoResponse airportInfo = restClientUtil.getAirportInfoResponse();
 		airportInfo.filterAirports(filter.getStrategies());
 		return airportInfo;
