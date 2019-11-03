@@ -9,7 +9,7 @@ AirportFinder exposes two end points for listing and filtering airports. By defa
 
 ```
 e.g. get all Australian airport
-/rest/airports
+http://localhost:8080/rest/airports
 ```
 
 2. /rest/airports/filters : It filters the airports by the condition given via the URL. Now the service can take following four key words: countryCode, airportCode, internationalAirport and regionalAirport.
@@ -18,29 +18,29 @@ e.g. get all Australian airport
 ```
 e.g. get all Australian airports
 
-/rest/airports/filters?countryCode=AU
+http://localhost:8080/rest/airports/filters?countryCode=AU
 ```
 ```
 e.g. get all Australian international airports
 
-/rest/airports/filters?countryCode=AU&internationalAirport=true
+http://localhost:8080/rest/airports/filters?countryCode=AU&internationalAirport=true
 ```
 ```
 e.g. get all Australian regional airports
 
-/rest/airports/filters?countryCode=AU&regionalAirport=true
+http://localhost:8080/rest/airports/filters?countryCode=AU&regionalAirport=true
 ```
 ```
 e.g. get get Sydney airport
 
-/rest/airports/filters?airportCode=SDY
+http://localhost:8080/rest/airports/filters?airportCode=SYD
 ```
 
 This application breaks down into three layers. 
 
 Controller layer contains all the end point and basic validations of input parameters. It also converts inputs into filter strategies. 
 
-On service layer it applies filters on the airport list and returns filter result. 
+On service layer it applies filters on the airport list and returns filtered result. 
 
 On domain layer it has all POJOs required in the Qantas Json API.
 
@@ -57,11 +57,13 @@ $ get clone https://github.com/ericlee83/QT_Challenge
 
 You can run AirportFinder application from your IDE as a simple Java application. However, you first need to import your project. Import steps vary depending on your IDE and build system.For example, STS users can select Import… --> Existing Projects into Workspace from the File menu.
 
+Run AirportFinderApplication as Spring boot app.
+
 #### Running as a packaged application
 
 ```
-$ mvn clean install -Dmaven.test.skip=true
-$ java -jar target/flightradar-0.0.1-SNAPSHOT.jar
+$ mvn clean install
+$ java -jar target/airport.finder-0.0.1-SNAPSHOT.jar
 ```
 
 ## Running the tests
@@ -86,8 +88,8 @@ Test AirportRestController and AirportService
 1. $ mvn -Dtest=AirportRestControllerIT test
 
 ### Unit test
-StandaloneControllerTest, ServiceTest and FilterTest
-Test standalone controller, Service and FilterStrategy
+AirportRestControllerTest, AirportServiceTest and AirportFilterTest
+Test standalone controller, AirortService and FilterStrategy
 #### IDE
 1. Run AirportRestControllerTest as a JUnit test.
 2. Run AirportServiceTest as a JUnit test.
