@@ -74,8 +74,7 @@ Assert if the AirportRestController is alive.
 1. Run AirportFinderApplicationTest as a JUnit test.
 
 #### Maven
-1. Keep AirportFinderApplicaiton alive.
-2. $ mvn -Dtest=AirportFinderApplicationTest test
+1. $ mvn -Dtest=AirportFinderApplicationTest test
 
 ### System test
 SystemTest.java
@@ -95,23 +94,21 @@ Test AirportRestController and AirportService
 #### IDE
 1. Run IntergrationTest as a JUnit test.
 
-####Maven
-1. Keep AirportFinderApplicaiton alive.
-2. $ mvn -Dtest=SystemTest test
+#### Maven
+1. $ mvn -Dtest=SystemTest test
 
 ### Unit test
-StandaloneControllerTest
-Test standalone controller
+StandaloneControllerTest, ServiceTest and FilterTest
+Test standalone controller, Service and FilterStrategy
 #### IDE
 1. Run StandaloneControllerTest as a JUnit test.
 2. Run ServiceTest as a JUnit test.
-3. Run FilterTest as a JUnit test
+3. Run FilterTest as a JUnit test.
 
 ####Maven
-1. Keep AirportFinderApplicaiton alive.
-2. $ mvn -Dtest=StandaloneControllerTest test
+1. $ mvn -Dtest=StandaloneControllerTest test
 2. $ mvn -Dtest=ServiceTest test
-2. $ mvn -Dtest=FilterTest test
+3. $ mvn -Dtest=FilterTest test
 
 
 ## Built With
